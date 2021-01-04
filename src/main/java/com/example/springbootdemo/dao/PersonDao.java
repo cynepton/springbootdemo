@@ -4,11 +4,19 @@ import com.example.springbootdemo.model.Person;
 
 import java.util.UUID;
 
+/**
+ * The interface for interacting with the Person Model.
+ */
 public interface PersonDao {
 
     int insertPerson(UUID id, Person person);
 
-    default int addPerson(Person person) {
+    /**
+     * Inserts a new Person
+     * @param person The Person object to insert
+     * @return Calls the interface insertPerson function
+     */
+    default int insertPerson(Person person) {
         UUID id = UUID.randomUUID();
         return insertPerson(id, person);
     }
